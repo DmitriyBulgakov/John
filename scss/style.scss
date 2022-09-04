@@ -1,0 +1,162 @@
+// nullstyle
+@import "nullstyle.scss";
+//
+// Иконочный стиль
+@import "icons";
+
+// подключение шрифтов
+@import url(https://fonts.googleapis.com/css?family=Heebo:regular,500,700,900);
+
+$fontFamyly:'Heebo';
+
+// <Переменные>===============================================
+$minWidth: 320px;
+$maxWidth: 1152;
+$maxWidthContainer: 856;
+$md1: $maxWidthContainer + 12;
+$md2: 991.98;
+$md3: 767.98;
+$md4: 479.98;
+// </Переменные>===============================================
+
+
+// Wrapper
+.wrapper{
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+//Основная сетка
+._container {
+    max-width: $maxWidthContainer;
+    margin: 0 auto;
+    
+    @media (max-width: ($md1 + px)) {
+        max-width: 750px;
+    }
+    @media (max-width: ($md2 + px)) {
+        max-width: none;
+        padding: 0 10px;
+    }
+}
+
+
+.header {
+
+    &__content {
+        max-width: 1052px;
+        padding: 0px 10px;
+        margin: 0 auto;
+    }
+    &__menu {
+        padding: 10px 0;
+        height: 82px;
+        align-items: center;
+        display: flex;
+        justify-content: flex-end; 
+        @media (max-width: ($md3 + px)){
+            height: 50px;
+        }
+    }
+}
+
+.menu {
+
+    &__icon {}
+
+    &__body {
+        @media (max-width: ($md3 + px)) {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: auto;
+            padding: 60px 10px 30px 10px;
+
+        }
+    }
+
+    &__list {
+        
+        
+        
+        li{
+            margin: 0 0 10px 0;
+                &:last-child {
+                    margin: 0 0 0 0;
+                }
+        }
+        @media (min-width: ($md3 + px)){
+            display: flex;
+            li{
+                 margin: 0 33px 0 0 ;
+             }
+        }
+      
+
+    }
+
+    &__link {
+        font-size: 20px;
+        font-weight: 500;
+        color: black;
+        transition: color 0.3s ease 0s;
+        @media (min-width: ($md1 + px)){
+            &:hover {
+                color: #ff6464;
+            }
+
+        }
+    }
+}
+
+.icon-menu {
+    display: none;
+    @media (max-width: ($md3 + px)) {
+        display: block;
+        position: relative;
+        width: 30px;
+        height: 18px;
+        cursor: pointer;
+        z-index: 5;
+        span {
+            transition: all 0.3s ease 0s;
+            top: calc(50% - 1px);
+            left: 0px;
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #000;
+            &:first-child {
+                top: 0px;
+            }
+
+            &:last-child {
+                top: auto;
+                bottom: 0px;
+            }
+        }
+        &._active {
+            span {
+                transform: scale(0);
+                &:first-child {
+                    transform: rotate(-45deg);
+                    top: calc(50% - 1px)
+                }
+                &:last-child {
+                    transform: rotate(45deg);
+                    bottom: calc(50% - 1px);
+                }
+            }
+        }
+
+    }
+}
+
+
+
