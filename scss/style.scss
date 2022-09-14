@@ -1,40 +1,51 @@
 // nullstyle
 @import "nullstyle.scss";
-//
+
 // Иконочный стиль
-@import "icons";
+// @import "icons";
 
 // подключение шрифтов
 @import url(https://fonts.googleapis.com/css?family=Heebo:regular,500,700,900);
 
-$fontFamyly:'Heebo';
-
 // <Переменные>===============================================
 $minWidth: 320px;
 $maxWidth: 1152;
-$maxWidthContainer: 856;
-$md1: $maxWidthContainer + 12;
+$maxWidthContainer: 856px;
+$md1: $maxWidthContainer + 12px;
 $md2: 991.98;
 $md3: 767.98;
 $md4: 479.98;
 // </Переменные>===============================================
 
+// Ui
+@import "ui.scss";
+@import "footer.scss";
+@import "icons.scss";
+@import "blog.scss";
 
-// Wrapper
+
+
+
+body{
+    color: #21243d;
+    font-family:'Heebo';
+}
+
+
+// <Wrapper>
 .wrapper{
     width: 100%;
     min-height: 100%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    
 }
+
 
 //Основная сетка
 ._container {
     max-width: $maxWidthContainer;
     margin: 0 auto;
-    
     @media (max-width: ($md1 + px)) {
         max-width: 750px;
     }
@@ -45,8 +56,24 @@ $md4: 479.98;
 }
 
 
-.header {
 
+
+// <Основной блок>=====================================================================
+.page{
+    padding-top: 90px;
+    flex: 1 1 auto;
+    @media (max-width: ($md3+px)) {
+        padding-top: 30px;
+
+    }
+}
+// </Основной блок>=====================================================================
+
+// <header>===============================================================
+.header {
+    position: relative;
+    z-index: 100;
+    
     &__content {
         max-width: 1052px;
         padding: 0px 10px;
@@ -65,52 +92,65 @@ $md4: 479.98;
 }
 
 .menu {
-
+    
     &__icon {}
-
+    
     &__body {
         @media (max-width: ($md3 + px)) {
+            transform: translate(0px, -100%);
+            transition: transform 0.8s ease 0s;
             position: fixed;
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
             overflow: auto;
-            padding: 60px 10px 30px 10px;
-
+            padding: 70px 10px 30px 10px;
+            background-color: (255, 255, 255, 0.8);
+            &._active {
+                transform: translate(0px, 0%);
+            }
+            
         }
     }
-
+    
     &__list {
         
         
         
         li{
-            margin: 0 0 10px 0;
-                &:last-child {
-                    margin: 0 0 0 0;
-                }
+            margin: 0 0 30px 0;
+            &:last-child {
+                margin: 0 0 0 0;
+            }
         }
         @media (min-width: ($md3 + px)){
             display: flex;
             li{
-                 margin: 0 33px 0 0 ;
-             }
+                margin: 0 33px 0 0 ;
+            }
         }
-      
-
+        
+        
     }
-
+    
     &__link {
         font-size: 20px;
         font-weight: 500;
         color: black;
         transition: color 0.3s ease 0s;
+        &._active{
+            color: #ff6464;
+        }
         @media (min-width: ($md1 + px)){
             &:hover {
-                color: #ff6464;
+                
             }
-
+        }
+        @media (min-width: ($md3 + px)) {
+            font-size: 40px;
+            display: block;
+            text-align: center; 
         }
     }
 }
@@ -135,7 +175,7 @@ $md4: 479.98;
             &:first-child {
                 top: 0px;
             }
-
+            
             &:last-child {
                 top: auto;
                 bottom: 0px;
@@ -154,9 +194,327 @@ $md4: 479.98;
                 }
             }
         }
+        
+    }
+}
+// </header>===============================================================
 
+
+
+// <hello>===============================================================
+.hello {
+    padding: 38px 0 70px 0;
+    @media (max-width: ($md2+px)) {
+        padding: 0px 0px 70px 0;
+    }
+    @media (max-width: ($md3+px)) {
+        padding: 0px 0px 60px 0;
+    }
+    
+    &__container {
+        display: flex;
+        @media (max-width: ($md3+px)) {
+        flex-direction: column-reverse;
+            align-items: center;
+            text-align: center;
+
+        }
+    }
+    
+    &__content {
+        align-items: flex-start;
+        flex: 1 1 auto;
+        padding: 18px 110px 0 0;
+        *:last-child{
+            margin-bottom: 0px;
+        }
+        @media (max-width: ($md2+px)) {
+            padding: 18px 50px 0 0;
+
+        }
+        @media (max-width: ($md3+px)) {
+
+
+            padding: 0px 0px 0 0;
+
+        }
+    }
+
+    &__title {
+        
+    }
+
+    &__text {
+        
+        margin: 0 0 35px 0;
+        @media (max-width: ($md3+px)) {
+        margin: 0 0 25px 0;
+        padding: 0 15px;
+
+        }
+    }
+
+    &__btn {
+        margin: 0 0 25px 0;
+        @media (max-width: ($md3+px)) {
+            margin: 0 0 20px 0;
+        }
+    }
+
+    &__avatar {
+        flex:  0 0 243px;
+        height: 243px;
+        position: relative;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: -5px 13px 0 0 #edf7fa;
+        img{
+            max-width: 100%;
+        }
+        @media (max-width: ($md3+px)) {
+            flex: 0 0 170px;
+            height: 170px;
+            margin: 0 0 40px 0;
+        }
+    }
+}
+
+.title {
+    margin: 0 0 25px 0;
+    @media (max-width: ($md3+px)) {
+        margin: 0px 0px 20px 0;
+    }
+}
+
+.btn {
+    background-color: #FF6464;
+    border-radius: 2px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #fff;
+    line-height: 29 / 20 * 100%;
+    height: 47px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0px 20px;
+    transition: background-color 0.3s ease 0s;
+    @media (min-width: 992px) {
+        &:hover {
+            background-color: #9a4040;
+        }
+    }
+    &.fw {
+        width: 100% ;
     }
 }
 
 
+// </hello>===============================================================
 
+
+// <recent-posts>===============================================================
+.recent-posts {
+    background: #edf7fa;
+    padding: 25px 0 13px 0;
+    @media (max-width: ($md3+px)) {
+        padding: 25px 0 23px 0;
+    }
+    &__container {}
+
+    &__header {
+        display: flex;
+        margin: 0 0 20px 0;
+    }
+
+    &__title {
+        padding: 0 20px 0 0;
+        flex: 1 1 auto;
+        
+    }
+
+    &__view-all {
+        flex: 0 0 auto;
+        font-size: 16px;
+        line-height: 23px;
+        color: #00a8cc;
+        @media (max-width: ($md3+px)) {
+            display: none;
+        }
+    }
+
+    &__items {
+        display: flex;
+        margin: 0 -10px;
+        @media (max-width: ($md3+px)) {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    &__column {
+        flex: 0 1 50%;
+        padding: 0 10px;
+        margin: 0 0 17px 0;
+    }
+
+    &__item {}
+}
+
+.recent-post {
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(187, 225, 250, 0.25 );
+    border-radius: 4px;
+    padding: 20px;
+    *:last-child{
+        margin-bottom: 0;
+    }
+
+    &__title {
+        display: inline-block;
+        color: inherit;
+        font-size: 26px;
+        font-weight: 700;
+        line-height: 38/26 * 100%;
+        transition: all 0.3s ease 0s;
+        margin: 0 0 17px 0;
+        @media (min-width: 858px) {
+            &:hover{
+               color: #FF6464;
+            }
+        }
+        @media (max-width: ($md3+px)) {
+            font-size: 22px;
+        }
+    }
+
+    &__info {
+        margin: 0 0 15px 0;
+        font-size: 18px;
+        line-height: 26 / 18 * 100%;
+        span {
+            margin: 0 10px;
+        }
+        @media (max-width: ($md3+px)) {
+            font-size: 16px;
+        }
+    }
+
+    &__text {
+        margin: 0 0 15px 0;
+    }
+
+
+}
+// </recent-posts>==============================================================
+
+
+
+// <work>==============================================================
+.featured-works {
+    padding: 30px 0 80px 0;
+    &__title {
+        margin: 0 0 20px 0;
+        @media (max-width: ($md3+px)) {
+            padding: 15px 0 5px 0;
+        }
+    }
+    @media (max-width: ($md3+px)) {
+        padding: 0 0 30px 0;
+    }
+    &__item {
+        @media (max-width: ($md3+px)) {
+            display: flex;
+            overflow: auto;
+
+            .works__item{
+                flex: 0 0 90%;
+                margin: 0 15px 0 0;
+            }
+        }
+    }
+}
+
+.title-posts {
+}
+.works {
+    
+    &__item {
+        display: flex;
+        align-items: flex-start;
+        padding: 0 0 30px 0;
+        margin: 0 0 30px 0;
+        border-bottom: 1px solid #e0e0e0;
+        &:last-child{
+            margin-bottom: 0;
+        }
+        @media (max-width: ($md3+px)) {
+            display: block;
+        }
+        
+    }
+
+    &__image {
+        flex: 0 0 246px;
+        border-radius: 6px;
+        min-height: 180px;
+        display: block;
+        overflow: hidden;
+        @media (max-width: ($md3+px)) {
+            margin: 0 0 17px 0;
+            padding: 0 0 50% 0;
+        }
+    }
+
+    &__body {
+        flex: 1 1 auto;
+        padding: 0 0 0 18px;
+    }
+
+    &__title {
+        color: inherit;
+        display: inline-flex;
+        font-size: 30px;
+        font-weight: 30;
+        line-height: 44 / 30 *100%;
+        margin: 0 0 15px 0;
+        @media (max-width: ($md3+px)) {
+            font-size: 24px;
+        }
+    }
+
+    &__info {
+        display: flex;
+        align-items: center;
+        margin: 0 0 15px 0;
+    }
+
+    &__year {
+        background: #142850;
+        border-radius: 16px;
+        height: 25px;
+        padding: 0 10px;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 60px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    &__category {
+        color: #8695a4;
+        font-size: 20px;
+        margin: 0 0 0 25px;
+    }
+
+    &__text {}
+}
+
+
+
+// </work>==============================================================
